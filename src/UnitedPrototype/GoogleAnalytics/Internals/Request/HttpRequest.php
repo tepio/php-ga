@@ -180,7 +180,7 @@ abstract class HttpRequest {
 		if($this->config->getEndpointHost() !== null) {
 			$timeout = $this->config->getRequestTimeout();
 			
-			$socket = fsockopen($this->config->getEndpointHost(), 80, $errno, $errstr, $timeout);
+			$socket = @fsockopen($this->config->getEndpointHost(), 80, $errno, $errstr, $timeout);
 			if(!$socket) return false;
 			
 			if($this->config->getFireAndForget()) {
